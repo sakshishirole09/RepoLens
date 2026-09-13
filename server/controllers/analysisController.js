@@ -38,8 +38,7 @@ const saveAnalysis = async (req, res) => {
 const getAnalysisHistory = async (
   req,
   res
-) => {
-  try {
+) => {   try {
     const history = await Analysis.find({
       userId: req.user.id,
     }).sort({
