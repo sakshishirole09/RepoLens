@@ -206,7 +206,7 @@ const Analysis = () => {
 
   const saveAnalysis = async () => {
     try {
-      await API.post("/history", {
+      await API.post("/api/history", {
         owner: username,
         repository: repo,
         projectType: analysis.detect?.projectType,

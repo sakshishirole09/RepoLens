@@ -33,16 +33,16 @@ const Dashboard = () => {
         risk,
         review,
       ] = await Promise.all([
-        API.get(`/github/detect/${owner}/${repository}`),
-        API.get(`/github/health/${owner}/${repository}`),
-        API.get(`/github/readme/${owner}/${repository}`),
-        API.get(`/github/languages/${owner}/${repository}`),
-        API.get(`/github/contributors/${owner}/${repository}`),
-        API.get(`/github/overall/${owner}/${repository}`),
-        API.get(`/github/stats/${owner}/${repository}`),
-        API.get(`/github/activity/${owner}/${repository}`),
-        API.get(`/github/risk/${owner}/${repository}`),
-        API.get(`/github/review/${owner}/${repository}`),
+        API.get(`/api/github/detect/${owner}/${repository}`),
+        API.get(`/api/github/health/${owner}/${repository}`),
+        API.get(`/api/github/readme/${owner}/${repository}`),
+        API.get(`/api/github/languages/${owner}/${repository}`),
+        API.get(`/api/github/contributors/${owner}/${repository}`),
+        API.get(`/api/github/overall/${owner}/${repository}`),
+        API.get(`/api/github/stats/${owner}/${repository}`),
+        API.get(`/api/github/activity/${owner}/${repository}`),
+        API.get(`/api/github/risk/${owner}/${repository}`),
+        API.get(`/api/github/review/${owner}/${repository}`),
       ]);
 
       const result = {
@@ -69,7 +69,7 @@ const Dashboard = () => {
     } catch (error) {
       console.error("Analysis failed:", error);
       setErrorMessage(
-        "Unable to analyze this repository. Check the repository name or GitHub API availability."
+        "Unable to analyze this repository. Check the repository name or GitHub API availability.",
       );
     } finally {
       setLoading(false);
@@ -87,7 +87,8 @@ const Dashboard = () => {
               CodePulse AI
             </h1>
             <p className="text-slate-500 mt-3 text-lg">
-              Analyze GitHub repositories for health, activity, community and risk.
+              Analyze GitHub repositories for health, activity, community and
+              risk.
             </p>
           </div>
 
