@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import API from "../api/axios";
 import Navbar from "../components/Navbar";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState("");
   const [repo, setRepo] = useState("");
   const [loading, setLoading] = useState(false);
@@ -65,7 +68,7 @@ const Dashboard = () => {
       sessionStorage.setItem("codepulse_analysis", JSON.stringify(result));
 
       // Open the result on a separate application screen.
-      window.location.href = "/analysis";
+      navigate("/analysis");
     } catch (error) {
       console.error("Analysis failed:", error);
       setErrorMessage(
