@@ -98,11 +98,11 @@ const Register = () => {
             <div>
               <div className="flex items-center gap-3">
                 <div className="w-11 h-11 rounded-2xl bg-white/15 border border-white/20 flex items-center justify-center font-bold text-xl">
-                  CP
+                  RL
                 </div>
 
                 <div>
-                  <h1 className="text-2xl font-bold">CodePulse AI</h1>
+                  <h1 className="text-2xl font-bold">RepoLens</h1>
                   <p className="text-indigo-100 text-xs">
                     Repository Intelligence
                   </p>
@@ -142,7 +142,7 @@ const Register = () => {
 
               <div>
                 <h1 className="text-2xl font-bold text-slate-900">
-                  CodePulse AI
+                  RepoLens
                 </h1>
                 <p className="text-xs text-slate-500">
                   Repository Intelligence
@@ -156,7 +156,7 @@ const Register = () => {
               </p>
 
               <h2 className="text-3xl font-bold text-slate-900 mt-2">
-                Start with CodePulse AI
+                Start with RepoLens
               </h2>
 
               <p className="text-slate-500 mt-2">
@@ -290,7 +290,7 @@ const Register = () => {
                   className="w-4 h-4 mt-0.5 accent-indigo-600"
                 />
                 <span>
-                  I agree to use CodePulse AI responsibly and keep my
+                  I agree to use RepoLens responsibly and keep my
                   account credentials secure.
                 </span>
               </label>

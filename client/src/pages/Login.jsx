@@ -62,11 +62,11 @@ const Login = () => {
             <div>
               <div className="flex items-center gap-3">
                 <div className="w-11 h-11 rounded-2xl bg-white/15 border border-white/20 flex items-center justify-center font-bold text-xl">
-                  CP
+                  RL
                 </div>
 
                 <div>
-                  <h1 className="text-2xl font-bold">CodePulse AI</h1>
+                  <h1 className="text-2xl font-bold">RepoLens</h1>
                   <p className="text-indigo-100 text-xs">
                     Repository Intelligence
                   </p>
@@ -104,9 +104,7 @@ const Login = () => {
               </div>
 
               <div>
-                <h1 className="text-2xl font-bold text-slate-900">
-                  CodePulse AI
-                </h1>
+                <h1 className="text-2xl font-bold text-slate-900">RepoLens</h1>
                 <p className="text-xs text-slate-500">
                   Repository Intelligence
                 </p>
@@ -203,7 +201,7 @@ const Login = () => {
 
             <div className="flex items-center gap-3 my-7">
               <div className="h-px bg-slate-200 flex-1" />
-              <span className="text-xs text-slate-400">NEW TO CODEPULSE?</span>
+              <span className="text-xs text-slate-400">NEW TO RepoLens?</span>
               <div className="h-px bg-slate-200 flex-1" />
             </div>
 
