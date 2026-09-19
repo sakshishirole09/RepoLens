@@ -2,14 +2,18 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
   try {
-    console.log("Trying MongoDB connection...");
+    if (!process.env.MONGO_URI) {
+      throw new Error("MONGO_URI is missing");
+    }
 
-    await mongoose.connect(process.env.MONGO_URI);
+    console.log("Trying MongoDB Atlas connection...");
 
-    console.log("MongoDB Connected");
+    const conn = await mongoose.connect(process.env.MONGO_URI);
+
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
-    console.error("Mongo Error:");
-    console.error(error.message);
+    console.error("Mongo Error:", error.message);
+    throw error;
   }
 };
 
