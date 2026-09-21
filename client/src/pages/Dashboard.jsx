@@ -87,7 +87,7 @@ const Dashboard = () => {
         <div className="w-full max-w-4xl">
           <div className="text-center mb-10">
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900">
-              CodePulse AI
+              RepoLens
             </h1>
             <p className="text-slate-500 mt-3 text-lg">
               Analyze GitHub repositories for health, activity, community and

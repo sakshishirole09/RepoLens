@@ -8,9 +8,7 @@ const {
   getProfile,
 } = require("../controllers/authController");
 
-const {
-  protect,
-} = require("../middleware/authMiddleware");
+const authMiddleware = require("../middleware/authMiddleware");
 
 // Test
 router.get("/test", (req, res) => {
@@ -20,22 +18,12 @@ router.get("/test", (req, res) => {
 });
 
 // Register
-router.post(
-  "/register",
-  registerUser
-);
+router.post("/register", registerUser);
 
 // Login
-router.post(
-  "/login",
-  loginUser
-);
+router.post("/login", loginUser);
 
 // Profile
-router.get(
-  "/profile",
-  protect,
-  getProfile
-);
+router.get("/profile", authMiddleware, getProfile);
 
 module.exports = router;

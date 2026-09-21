@@ -1,6 +1,9 @@
 const Analysis = require("../models/Analysis");
 
-// Save Analysis
+// =====================================================
+// SAVE ANALYSIS
+// =====================================================
+
 const saveAnalysis = async (req, res) => {
   try {
     const {
@@ -10,57 +13,83 @@ const saveAnalysis = async (req, res) => {
       healthScore,
       readmeScore,
       overallScore,
+      grade,
+      communityScore,
+      activityScore,
+      riskScore,
       languages,
     } = req.body;
 
     const analysis = await Analysis.create({
+      // IMPORTANT:
+      // Never take userId from frontend.
+      // Get it from authenticated JWT.
       userId: req.user.id,
+
       owner,
       repository,
       projectType,
+
       healthScore,
       readmeScore,
       overallScore,
+
+      grade,
+      communityScore,
+      activityScore,
+      riskScore,
+
       languages,
     });
 
     res.status(201).json({
       message: "Analysis saved successfully",
+
       analysis,
     });
   } catch (error) {
+    console.error("Save analysis error:", error);
+
     res.status(500).json({
       message: error.message,
     });
   }
 };
-// Get All Analysis History
-const getAnalysisHistory = async (
-  req,
-  res
-) => {   try {
+
+// =====================================================
+// GET USER HISTORY
+// =====================================================
+
+const getAnalysisHistory = async (req, res) => {
+  try {
     const history = await Analysis.find({
       userId: req.user.id,
     }).sort({
       createdAt: -1,
     });
 
-    res.json(history);
+    res.status(200).json(history);
   } catch (error) {
+    console.error("Get history error:", error);
+
     res.status(500).json({
       message: error.message,
     });
   }
 };
 
-// Get Single Analysis
-const getAnalysisById = async (
-  req,
-  res
-) => {
+// =====================================================
+// GET SINGLE ANALYSIS
+// =====================================================
+
+const getAnalysisById = async (req, res) => {
   try {
     const analysis = await Analysis.findOne({
       _id: req.params.id,
+
+      // IMPORTANT:
+      // User can only access
+      // their own analysis.
       userId: req.user.id,
     });
 
@@ -70,13 +99,16 @@ const getAnalysisById = async (
       });
     }
 
-    res.json(analysis);
+    res.status(200).json(analysis);
   } catch (error) {
+    console.error("Get analysis error:", error);
+
     res.status(500).json({
       message: error.message,
     });
   }
 };
+
 module.exports = {
   saveAnalysis,
   getAnalysisHistory,

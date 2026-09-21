@@ -12,7 +12,7 @@ const History = () => {
 
   const fetchHistory = async () => {
     try {
-      const { data } = await API.get("api/history");
+      const { data } = await API.get("/api/history");
 
       setHistory(data);
     } catch (error) {

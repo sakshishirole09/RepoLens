@@ -40,9 +40,8 @@ const Login = () => {
         email: form.email.trim(),
         password: form.password,
       });
-
       login(data);
-      navigate("/");
+      navigate("/dashboard");
     } catch (error) {
       setError(
         error?.response?.data?.message ||

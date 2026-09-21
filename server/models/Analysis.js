@@ -5,10 +5,6 @@ const analysisSchema = new mongoose.Schema(
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-    },
-
-    repository: {
-      type: String,
       required: true,
     },
 
@@ -17,20 +13,51 @@ const analysisSchema = new mongoose.Schema(
       required: true,
     },
 
-    projectType: String,
+    repository: {
+      type: String,
+      required: true,
+    },
 
-    healthScore: Number,
+    projectType: {
+      type: String,
+    },
 
-    readmeScore: Number,
+    healthScore: {
+      type: Number,
+    },
 
-    overallScore: Number,
+    readmeScore: {
+      type: Number,
+    },
+
+    overallScore: {
+      type: Number,
+    },
+
+    grade: {
+      type: String,
+    },
+
+    communityScore: {
+      type: Number,
+    },
+
+    activityScore: {
+      type: Number,
+    },
+
+    riskScore: {
+      type: Number,
+    },
 
     languages: {
-      type: Object,
+      type: mongoose.Schema.Types.Mixed,
       default: {},
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  },
 );
 
 module.exports = mongoose.model("Analysis", analysisSchema);

@@ -8,12 +8,27 @@ const {
   getAnalysisById,
 } = require("../controllers/analysisController");
 
-const { protect } = require("../middleware/authMiddleware");
+const authMiddleware = require("../middleware/authMiddleware");
 
-router.post("/save", protect, saveAnalysis);
+// =====================================================
+// SAVE ANALYSIS
+// POST /api/history
+// =====================================================
 
-router.get("/history", protect, getAnalysisHistory);
+router.post("/", authMiddleware, saveAnalysis);
 
-router.get("/:id", protect, getAnalysisById);
+// =====================================================
+// GET USER'S ANALYSIS HISTORY
+// GET /api/history
+// =====================================================
+
+router.get("/", authMiddleware, getAnalysisHistory);
+
+// =====================================================
+// GET SINGLE ANALYSIS
+// GET /api/history/:id
+// =====================================================
+
+router.get("/:id", authMiddleware, getAnalysisById);
 
 module.exports = router;
