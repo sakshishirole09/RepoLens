@@ -1,9 +1,6 @@
 const Analysis = require("../models/Analysis");
 
-// =====================================================
 // SAVE ANALYSIS
-// =====================================================
-
 const saveAnalysis = async (req, res) => {
   try {
     const {
@@ -20,31 +17,27 @@ const saveAnalysis = async (req, res) => {
       languages,
     } = req.body;
 
+    // IMPORTANT:
+    // Never accept userId from the frontend.
+    // Get it from the authenticated JWT.
     const analysis = await Analysis.create({
-      // IMPORTANT:
-      // Never take userId from frontend.
-      // Get it from authenticated JWT.
       userId: req.user.id,
 
       owner,
       repository,
       projectType,
-
       healthScore,
       readmeScore,
       overallScore,
-
       grade,
       communityScore,
       activityScore,
       riskScore,
-
       languages,
     });
 
     res.status(201).json({
       message: "Analysis saved successfully",
-
       analysis,
     });
   } catch (error) {
@@ -56,17 +49,18 @@ const saveAnalysis = async (req, res) => {
   }
 };
 
-// =====================================================
-// GET USER HISTORY
-// =====================================================
-
+// GET ONLY LOGGED-IN USER'S HISTORY
 const getAnalysisHistory = async (req, res) => {
   try {
+    console.log("Logged-in user ID:", req.user.id);
+
     const history = await Analysis.find({
       userId: req.user.id,
     }).sort({
       createdAt: -1,
     });
+
+    console.log("History records returned:", history.length);
 
     res.status(200).json(history);
   } catch (error) {
@@ -78,18 +72,12 @@ const getAnalysisHistory = async (req, res) => {
   }
 };
 
-// =====================================================
-// GET SINGLE ANALYSIS
-// =====================================================
-
+// GET ONE ANALYSIS
+// Also verifies that the analysis belongs to the logged-in user.
 const getAnalysisById = async (req, res) => {
   try {
     const analysis = await Analysis.findOne({
       _id: req.params.id,
-
-      // IMPORTANT:
-      // User can only access
-      // their own analysis.
       userId: req.user.id,
     });
 

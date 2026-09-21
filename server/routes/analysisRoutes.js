@@ -10,25 +10,13 @@ const {
 
 const authMiddleware = require("../middleware/authMiddleware");
 
-// =====================================================
 // SAVE ANALYSIS
-// POST /api/history
-// =====================================================
-
 router.post("/", authMiddleware, saveAnalysis);
 
-// =====================================================
-// GET USER'S ANALYSIS HISTORY
-// GET /api/history
-// =====================================================
-
+// GET CURRENT USER'S HISTORY
 router.get("/", authMiddleware, getAnalysisHistory);
 
-// =====================================================
-// GET SINGLE ANALYSIS
-// GET /api/history/:id
-// =====================================================
-
+// GET CURRENT USER'S SINGLE ANALYSIS
 router.get("/:id", authMiddleware, getAnalysisById);
 
 module.exports = router;

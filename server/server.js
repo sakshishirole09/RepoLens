@@ -26,7 +26,7 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/github", githubRoutes);
 app.use("/api/analysis", analysisRoutes);
-app.use("/api/history", historyRoutes);
+app.use("/api/history", analysisRoutes);
 
 // -----------------------------
 // Health Check
